@@ -29,13 +29,3 @@
 ===============================================================================
 */
 #include "lasvlr.hpp"
-
-LASvlr_lastiling::LASvlr_lastiling()
-{
-  memset((void*)this, 0, sizeof(LASvlr_lastiling));
-}
-
-LASvlr_lasoriginal::LASvlr_lasoriginal()
-{
-  memset((void*)this, 0, sizeof(LASvlr_lasoriginal));
-}

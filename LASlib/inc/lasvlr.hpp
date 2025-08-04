@@ -32,6 +32,8 @@
 #ifndef LAS_VLR_HPP
 #define LAS_VLR_HPP
 
+#include <cstring>
+
 #include "mydefs.hpp"
 
 class LASvlr_lastiling
