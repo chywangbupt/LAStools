@@ -762,12 +762,12 @@ BOOL LASquadtree::manage_cell(const U32 cell_index, const BOOL finalize)
     }
     else
     {
-#pragma warning(push)
-#pragma warning(disable : 6011)
+// #pragma warning(push)
+// #pragma warning(disable : 6011)
       adaptive = (U32*)malloc((adaptive_pos+1)*sizeof(U32));
       for (U32 i = adaptive_alloc; i <= adaptive_pos; i++) adaptive[i] = 0;
       adaptive_alloc = adaptive_pos+1;
-#pragma warning(pop)
+// #pragma warning(pop)
     }
   }
   adaptive[adaptive_pos] &= ~adaptive_bit;

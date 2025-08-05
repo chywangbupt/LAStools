@@ -348,7 +348,10 @@ const char* indent_text(const char* text, const char* indent);
 // las error message function which leads to an immediate program stop by default
 template <typename... Args>
 void laserror(LAS_FORMAT_STRING(const char*) fmt, Args... args) {
-  LASMessage(LAS_ERROR, fmt, args...);
+  std::ostringstream oss;
+  (void)(oss << ... << args);
+  LASMessage(LAS_ERROR, fmt, oss.str().c_str());
+  //LASMessage(LAS_ERROR, fmt, args...);
   if (do_halt_on_error()) {
     byebye();
   }
@@ -358,7 +361,10 @@ void laserror(LAS_FORMAT_STRING(const char*) fmt, Args... args) {
 // extended message with additional user info in console mode
 template <typename... Args>
 void laserrorm(LAS_FORMAT_STRING(const char*) fmt, Args... args) {
-  LASMessage(LAS_ERROR, fmt, args...);
+  std::ostringstream oss;
+  (void)(oss << ... << args);
+  LASMessage(LAS_ERROR, fmt, oss.str().c_str());
+  //LASMessage(LAS_ERROR, fmt, args...);
   LASMessage(LAS_INFO, "\tcontact info@rapidlasso.de for support\n");
   if (do_halt_on_error()) {
     byebye();

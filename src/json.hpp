@@ -8216,8 +8216,8 @@ class lexer : public lexer_base<BasicJsonType>
      */
     bool scan_comment()
     {
-#pragma warning(push)
-#pragma warning(disable : 26819)
+// #pragma warning(push)
+// #pragma warning(disable : 26819)
         switch (get())
         {
             // single-line comments skip input until a newline or EOF is read
@@ -8281,7 +8281,7 @@ class lexer : public lexer_base<BasicJsonType>
                 return false;
             }
         }
-#pragma warning(pop)
+// #pragma warning(pop)
     }
 
     JSON_HEDLEY_NON_NULL(2)
@@ -20074,8 +20074,8 @@ class basic_json // NOLINT(cppcoreguidelines-special-member-functions,hicpp-spec
         // ordered_json uses a vector internally, so pointers could have
         // been invalidated; see https://github.com/nlohmann/json/issues/2962
 #ifdef JSON_HEDLEY_MSVC_VERSION
-#pragma warning(push )
-#pragma warning(disable : 4127) // ignore warning to replace if with if constexpr
+// #pragma warning(push )
+// #pragma warning(disable : 4127) // ignore warning to replace if with if constexpr
 #endif
         if (detail::is_ordered_map<object_t>::value)
         {
@@ -20083,7 +20083,7 @@ class basic_json // NOLINT(cppcoreguidelines-special-member-functions,hicpp-spec
             return j;
         }
 #ifdef JSON_HEDLEY_MSVC_VERSION
-#pragma warning( pop )
+// #pragma warning( pop )
 #endif
 
         j.m_parent = this;

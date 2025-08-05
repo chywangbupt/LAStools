@@ -300,8 +300,8 @@ class LASLIB_DLL LASpoint {
 
     // create point's item pointers
     point = new U8*[num_items];
-#pragma warning(push)
-#pragma warning(disable : 26819)
+// #pragma warning(push)
+// #pragma warning(disable : 26819)
     U16 i;
     for (i = 0; i < num_items; i++) {
       total_point_size += items[i].size;
@@ -343,7 +343,7 @@ class LASLIB_DLL LASpoint {
     this->quantizer = quantizer;
     this->attributer = attributer;
     return TRUE;
-#pragma warning(pop)
+// #pragma warning(pop)
   };
 
   BOOL init(const LASquantizer* quantizer, const U32 num_items, const LASitem* items, const LASattributer* attributer = 0) {
@@ -356,8 +356,8 @@ class LASLIB_DLL LASpoint {
     this->items = new LASitem[num_items];
     if (this->point) delete[] this->point;
     this->point = new U8*[num_items];
-#pragma warning(push)
-#pragma warning(disable : 26819)
+// #pragma warning(push)
+// #pragma warning(disable : 26819)
     for (i = 0; i < num_items; i++) {
       this->items[i] = items[i];
       total_point_size += items[i].size;
@@ -399,7 +399,7 @@ class LASLIB_DLL LASpoint {
     this->quantizer = quantizer;
     this->attributer = attributer;
     return TRUE;
-#pragma warning(pop)
+// #pragma warning(pop)
   };
 
   BOOL inside_rectangle(const F64 r_min_x, const F64 r_min_y, const F64 r_max_x, const F64 r_max_y) const {

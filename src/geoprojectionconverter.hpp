@@ -150,8 +150,8 @@ struct GeoProjectionGeoKeys {
 #define GEO_VERTICAL_NAVD88_GEOID12B 1145103
 #define GEO_VERTICAL_NAVD88_GEOID18  1185103
 
-#pragma warning(push)
-#pragma warning(disable : 26495)
+// #pragma warning(push)
+// #pragma warning(disable : 26495)
 class GeoProjectionEllipsoid
 {
 public:
@@ -560,4 +560,4 @@ private:
   void set_proj_param_for_transformation_with_wkt(const char* source_filename, const char* target_filename);
   bool do_proj_crs_transformation(double& x, double& y, double& elevation) const;
 };
-#pragma warning(pop)
+// #pragma warning(pop)

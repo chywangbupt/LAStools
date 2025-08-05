@@ -1870,8 +1870,8 @@ public:
   }
   void reset()
   {
-#pragma warning(push)
-#pragma warning(disable : 6001)
+// #pragma warning(push)
+// #pragma warning(disable : 6001)
     if (grid_spacing > 0) grid_spacing = -grid_spacing;
     if (minus_minus_size)
     {
@@ -1913,7 +1913,7 @@ public:
       plus_plus_sizes = 0;
       plus_plus_size = 0;
     }
-#pragma warning(pop)
+// #pragma warning(pop)
   };
   LAScriterionThinWithGrid(F32 grid_spacing)
   {

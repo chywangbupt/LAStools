@@ -118,8 +118,8 @@ BOOL LASreaderASC::open(const CHAR* file_name, BOOL comma_not_point)
   nodata = -9999;
   header_lines = 0;
 
-#pragma warning(push)
-#pragma warning(disable : 6387)
+// #pragma warning(push)
+// #pragma warning(disable : 6387)
 
   while (!complete)
   {
@@ -143,7 +143,7 @@ BOOL LASreaderASC::open(const CHAR* file_name, BOOL comma_not_point)
       line_size = 1024 + 50 * ncols;
       line = (CHAR*)malloc(sizeof(CHAR) * line_size);
     }
-#pragma warning(pop)
+// #pragma warning(pop)
     else if (strstr(line, "nrows") || strstr(line, "NROWS"))
     {
       sscanf_las(line, "%s %d", dummy, &nrows);
@@ -540,7 +540,9 @@ BOOL LASreaderASC::reopen(const CHAR* file_name)
   I32 i;
   for (i = 0; i < header_lines; i++)
   {
-    fgets(line, line_size, file);
+    if (fgets(line, line_size, file) == NULL) {
+        fprintf(stderr, "Error reading file\n");
+    }
   }
 
   // special handling for European numbers

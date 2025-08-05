@@ -481,8 +481,8 @@ void LASbin::add(I64 item)
 
 void LASbin::add_to_bin(I32 bin)
 {
-#pragma warning(push)
-#pragma warning(disable : 6011)
+// #pragma warning(push)
+// #pragma warning(disable : 6011)
   if (first)
   {
     anker = bin;
@@ -552,13 +552,13 @@ void LASbin::add_to_bin(I32 bin)
     }
     bins_neg[bin]++;
   }
-#pragma warning(pop)
+// #pragma warning(pop)
 }
 
 void LASbin::add(I32 item, I32 value)
 {
-#pragma warning(push)
-#pragma warning(disable : 6011)
+// #pragma warning(push)
+// #pragma warning(disable : 6011)
   total += item;
   count++;
   I32 bin = I32_FLOOR(one_over_step*item);
@@ -657,13 +657,13 @@ void LASbin::add(I32 item, I32 value)
     bins_neg[bin]++;
     values_neg[bin] += value;
   }
-#pragma warning(pop)
+// #pragma warning(pop)
 }
 
 void LASbin::add(F64 item, F64 value)
 {
-#pragma warning(push)
-#pragma warning(disable : 6011)
+// #pragma warning(push)
+// #pragma warning(disable : 6011)
   total += item;
   count++;
   I32 bin = I32_FLOOR(one_over_step*item);
@@ -762,7 +762,7 @@ void LASbin::add(F64 item, F64 value)
     bins_neg[bin]++;
     values_neg[bin] += value;
   }
-#pragma warning(pop)
+// #pragma warning(pop)
 }
 
 static void lidardouble2string(CHAR* string, F64 value)
@@ -1473,8 +1473,8 @@ BOOL LASoccupancyGrid::add_internal(I32 pos_x, I32 pos_y)
       array_sizes = &plus_plus_sizes;
     }
   }
-#pragma warning(push)
-#pragma warning(disable : 6011)
+// #pragma warning(push)
+// #pragma warning(disable : 6011)
   // maybe grow banded grid in y direction
   if ((U32)pos_y >= *array_size)
   {
@@ -1528,7 +1528,7 @@ BOOL LASoccupancyGrid::add_internal(I32 pos_x, I32 pos_y)
   (*array)[pos_y][pos_x_pos] |= pos_x_bit;
   num_occupied++;
   return TRUE;
-#pragma warning(pop)
+// #pragma warning(pop)
 }
 
 BOOL LASoccupancyGrid::occupied(const LASpoint* point) const
@@ -1621,8 +1621,8 @@ BOOL LASoccupancyGrid::active() const
 
 void LASoccupancyGrid::reset()
 {
-#pragma warning(push)
-#pragma warning(disable : 6001)
+// #pragma warning(push)
+// #pragma warning(disable : 6001)
   min_x = min_y = max_x = max_y = 0;
   if (grid_spacing > 0) grid_spacing = -grid_spacing;
   if (minus_minus_size)
@@ -1666,7 +1666,7 @@ void LASoccupancyGrid::reset()
     plus_plus_size = 0;
   }
   num_occupied = 0;
-#pragma warning(pop)
+// #pragma warning(pop)
 }
 
 BOOL LASoccupancyGrid::write_asc_grid(const CHAR* file_name) const

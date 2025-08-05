@@ -743,15 +743,15 @@ BOOL LASreadPoint::read_chunk_table()
     }
     else
     {
-#pragma warning(push)
-#pragma warning(disable : 6011)
+// #pragma warning(push)
+// #pragma warning(disable : 6011)
       // otherwise fix as many additional chunk_starts as possible
       U32 i;
       for (i = 1; i < tabled_chunks; i++)
       {
         chunk_starts[i] += chunk_starts[i-1];
       }
-#pragma warning(pop)
+// #pragma warning(pop)
     }
     // create warning string
     if (last_warning == 0) last_warning = new CHAR[128];

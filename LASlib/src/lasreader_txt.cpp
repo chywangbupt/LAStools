@@ -117,7 +117,7 @@ BOOL LASreaderTXT::open(FILE* file, const CHAR* file_name, U8 point_type, const 
     // User-input parse string has the precedence
     this->parse_string = LASCopyString(parse_string);
     // User provided a parse_string but the file may contain the column description
-    for (i = 0; i < this->skip_lines; i++) fgets(line, 512, file);
+    for (i = 0; i < this->skip_lines; i++) (void)fgets(line, 512, file);
     char* auto_parse_string = 0;
     has_column_description = parse_column_description(&auto_parse_string);
     fseek(file, 0, SEEK_SET);
@@ -134,7 +134,7 @@ BOOL LASreaderTXT::open(FILE* file, const CHAR* file_name, U8 point_type, const 
   else
   {
     // User did not provide a parse_string the file may contain the column description
-    for (i = 0; i < this->skip_lines; i++) fgets(line, 512, file);
+    for (i = 0; i < this->skip_lines; i++) (void)fgets(line, 512, file);
     has_column_description = parse_column_description(&this->parse_string);
     fseek(file, 0, SEEK_SET);
     // Column description found but nothing parsed.
@@ -316,8 +316,8 @@ BOOL LASreaderTXT::open(FILE* file, const CHAR* file_name, U8 point_type, const 
 
     // skip lines if we have to
 
-    for (i = 0; i < this->skip_lines; i++) fgets(line, 512, file);
-    if (has_column_description) fgets(line, 512, file);
+    for (i = 0; i < this->skip_lines; i++) (void)fgets(line, 512, file);
+    if (has_column_description) (void)fgets(line, 512, file);
 
     if (ipts)
     {
@@ -661,7 +661,7 @@ BOOL LASreaderTXT::open(FILE* file, const CHAR* file_name, U8 point_type, const 
 
   if (this->skip_lines)
   {
-    for (i = 0; i < this->skip_lines; i++) fgets(line, 512, file);
+    for (i = 0; i < this->skip_lines; i++) (void)fgets(line, 512, file);
   }
   else if (ipts)
   {
@@ -1140,7 +1140,7 @@ BOOL LASreaderTXT::seek(const I64 p_index)
     fseek(file, 0, SEEK_SET);
     // skip lines if we have to
     int i;
-    for (i = 0; i < skip_lines; i++) fgets(line, 512, file);
+    for (i = 0; i < skip_lines; i++) (void)fgets(line, 512, file);
     // read the first line with full parse_string
     i = 0;
     while (fgets(line, 512, file))
@@ -1323,7 +1323,7 @@ BOOL LASreaderTXT::reopen(const char* file_name)
 
   // skip lines if we have to
 
-  for (i = 0; i < skip_lines; i++) fgets(line, 512, file);
+  for (i = 0; i < skip_lines; i++) (void)fgets(line, 512, file);
 
   // read the first line with full parse_string
 
@@ -1643,7 +1643,7 @@ BOOL LASreaderTXT::parse_column_description(CHAR** parse_string)
 {
   // Read the first line
   I32 here = ftell(file);
-  fgets(line, 512, file);
+  (void)fgets(line, 512, file);
 
   // If it contains column description
   if (strstr(line, "x") || strstr(line, "y") || strstr(line, "z") || strstr(line, "X") || strstr(line, "Y") || strstr(line, "Z"))
@@ -1653,8 +1653,8 @@ BOOL LASreaderTXT::parse_column_description(CHAR** parse_string)
     char* auto_parse_string = (char*)calloc(64, sizeof(char));
 
     U32 i = 0;
-#pragma warning(push)
-#pragma warning(disable : 6011)
+// #pragma warning(push)
+// #pragma warning(disable : 6011)
     while (token)
     {
       if (strcmp(token, "x") == 0) auto_parse_string[i] = 'x';
@@ -1754,7 +1754,7 @@ BOOL LASreaderTXT::parse_column_description(CHAR** parse_string)
           return true;
         }
       }
-#pragma warning(pop)
+// #pragma warning(pop)
       else if (strcmp(token, "HSV_S") == 0 || strcmp(token, "HSV_V") == 0)
       {
         // Assuming that HSV columns are consecutive HSV_S should have already been parsed

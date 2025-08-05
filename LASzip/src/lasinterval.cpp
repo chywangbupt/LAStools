@@ -246,12 +246,12 @@ void LASinterval::merge_intervals(U32 maximum_intervals)
     }
     else
     {
-#pragma warning(push)
-#pragma warning(disable : 28182)
+// #pragma warning(push)
+// #pragma warning(disable : 28182)
       delete_cell = cell->next;
       cell->end = delete_cell->end;
       cell->next = delete_cell->next;
-#pragma warning(pop)
+// #pragma warning(pop)
       if (cell->next)
       {
         map.insert(my_cell_map::value_type(cell->next->start - cell->end - 1, cell));
@@ -412,8 +412,8 @@ BOOL LASinterval::merge(const BOOL erase)
     LASintervalCell* cell;
     my_cell_map map;
     my_cell_set::iterator set_element = ((my_cell_set*)cells_to_merge)->begin();
-#pragma warning(push)
-#pragma warning(disable : 6011)
+// #pragma warning(push)
+// #pragma warning(disable : 6011)
     while (true)
     {
       if (set_element == ((my_cell_set*)cells_to_merge)->end()) break;
@@ -426,7 +426,7 @@ BOOL LASinterval::merge(const BOOL erase)
       }
       set_element++;
     }
-#pragma warning(pop)
+// #pragma warning(pop)
     // initialize merged_cells with first interval
     my_cell_map::iterator map_element = map.begin();
     cell = (*map_element).second;
@@ -666,12 +666,12 @@ BOOL LASinterval::write(ByteStreamOut* stream) const
   while (hash_element != ((my_cell_hash*)cells)->end())
   {
     LASintervalCell* cell = (*hash_element).second;
-#pragma warning(push)
-#pragma warning(disable : 6011)
+// #pragma warning(push)
+// #pragma warning(disable : 6011)
     // count number of intervals and points in cell
     U32 number_intervals = 0;
     U32 number_points = ((LASintervalStartCell*)cell)->full;
-#pragma warning(pop)
+// #pragma warning(pop)
     while (cell)
     {
       number_intervals++;

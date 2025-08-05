@@ -215,10 +215,10 @@ int main(int argc, char *argv[])
   {
     laserror("could not open lasreader");
   }
-#pragma warning(push)
-#pragma warning(disable : 6011)
+// #pragma warning(push)
+// #pragma warning(disable : 6011)
   LASMessage(LAS_VERBOSE, "merging headers took %g sec. there are %lld points in total.", taketime()-start_time, lasreader->npoints);
-#pragma warning(push)
+// #pragma warning(push)
   start_time = taketime();
 
   // prepare the header for the surviving points

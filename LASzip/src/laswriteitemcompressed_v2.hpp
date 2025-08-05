@@ -84,9 +84,17 @@ public:
 private:
   ArithmeticEncoder* enc;
   U32 last, next;
-  U64I64F64 last_gpstime[4] = {0};
-  I32 last_gpstime_diff[4] = {0};
-  I32 multi_extreme_counter[4] = {0};
+  //U64I64F64 last_gpstime[4] = {0};
+  //I32 last_gpstime_diff[4] = {0};
+  //I32 multi_extreme_counter[4] = {0};
+  U64I64F64 last_gpstime[4] = {
+    {0},       // [0].u64=0
+    {0},       // [1].u64=0  
+    {0},       // [2].u64=0
+    {0}        // [3].u64=0
+  };
+  I32 last_gpstime_diff[4] = {0, 0, 0, 0};
+  I32 multi_extreme_counter[4] = {0, 0, 0, 0};
 
   ArithmeticModel* m_gpstime_multi;
   ArithmeticModel* m_gpstime_0diff;

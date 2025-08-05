@@ -447,15 +447,15 @@ BOOL LASwriteOpener::set_directory(const CHAR* directory)
     {
       return FALSE;
     }
-#pragma warning(push)
-#pragma warning(disable : 6001)
+// #pragma warning(push)
+// #pragma warning(disable : 6001)
     I32 len = (I32)strlen(this->directory);
     if ((len > 0) && ((this->directory[len-1] == '\\') || (this->directory[len-1] == '/')))
     {
       this->directory[len-1] = '\0';
     }
     if (file_name) add_directory();
-#pragma warning(pop)
+// #pragma warning(pop)
     // return FALSE if it does not exist or is no directory
 
     if ((len > 0) && (this->directory[len-1] != ':'))
@@ -1189,7 +1189,9 @@ void LASwriteOpener::add_appendix(const CHAR* appendix)
 
 #ifdef __GNUC__ 
 #pragma GCC diagnostic push
+#if defined(__GNUC__) && !defined(__clang__)
 #pragma GCC diagnostic ignored "-Wstringop-overflow"
+#endif
 #endif
 void LASwriteOpener::cut_characters() {
   if (file_name && cut)

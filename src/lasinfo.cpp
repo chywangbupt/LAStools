@@ -203,8 +203,8 @@ class LasTool_lasinfo : public LasTool {
   F64* set_scale = 0;
   F64* scale_header = 0;
 
-#pragma warning(push)
-#pragma warning(disable : 6262)
+// #pragma warning(push)
+// #pragma warning(disable : 6262)
  public:
   void run() {
     int i;
@@ -3730,7 +3730,7 @@ class LasTool_lasinfo : public LasTool {
 
     byebye();
   };
-#pragma warning(pop)
+// #pragma warning(pop)
 
   void usage() override {
     fprintf(stderr, "usage:\n");

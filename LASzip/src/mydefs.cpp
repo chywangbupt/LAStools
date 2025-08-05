@@ -288,7 +288,7 @@ std::string dir_current() {
 #ifdef _MSC_VER
   GetCurrentDirectory(MAX_PATH, curr_directory);
 #else
-  getcwd(curr_directory, MAX_PATH);
+  (void)getcwd(curr_directory, MAX_PATH);
 #endif
   return std::string(curr_directory);
 }

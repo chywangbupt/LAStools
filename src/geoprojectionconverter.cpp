@@ -1812,8 +1812,8 @@ bool GeoProjectionConverter::GeoTiffInfo(
 
 bool GeoProjectionConverter::get_geo_keys_from_projection(
     int& num_geo_keys, GeoProjectionGeoKeys** geo_keys, int& num_geo_double_params, double** geo_double_params, bool source) {
-#pragma warning(push)
-#pragma warning(disable : 6011)
+// #pragma warning(push)
+// #pragma warning(disable : 6011)
   num_geo_keys = 0;
   num_geo_double_params = 0;
   GeoProjectionParameters* projection = (source ? source_projection : target_projection);
@@ -2297,7 +2297,7 @@ bool GeoProjectionConverter::get_geo_keys_from_projection(
     }
   }
   return false;
-#pragma warning(pop)
+// #pragma warning(pop)
 }
 
 /// <summary>
@@ -8733,8 +8733,8 @@ void GeoProjectionConverter::set_proj_crs_with_json(const char* json_filename, b
   }
   fseek(Proj_file, 0, SEEK_SET);
   char* jsonContent = new char[fileSize + 1];
-#pragma warning(push)
-#pragma warning(disable : 6001)
+// #pragma warning(push)
+// #pragma warning(disable : 6001)
   if (!jsonContent) {
     fclose(Proj_file);
     proj_context_destroy(projParameters.proj_ctx);
@@ -8754,7 +8754,7 @@ void GeoProjectionConverter::set_proj_crs_with_json(const char* json_filename, b
   PJ* proj_crs = proj_create(projParameters.proj_ctx, jsonContent);
 
   delete[] jsonContent;
-#pragma warning(pop)
+// #pragma warning(pop)
 
   // Check whether the CRS is valid
   if (!proj_crs) {
@@ -8849,10 +8849,10 @@ void GeoProjectionConverter::set_proj_crs_with_wkt(const char* wkt_filename, boo
     projParameters.set_header_wkt_representation(projParameters.proj_target_crs);
     LASMessage(LAS_VERY_VERBOSE, "the PROJ target object was successfully created");
   }
-#pragma warning(push)
-#pragma warning(disable : 6001)
+// #pragma warning(push)
+// #pragma warning(disable : 6001)
   delete[] wktContent;
-#pragma warning(pop)
+// #pragma warning(pop)
 }
 
 /// IMPORTANT: The Proj lib must be installed and loaded to use this functionality.
